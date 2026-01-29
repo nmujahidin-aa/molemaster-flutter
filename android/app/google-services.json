@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "676780590188",
+    "project_id": "mole-master-new-oo",
+    "storage_bucket": "mole-master-new-oo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676780590188:android:c91362aa23494000490449",
+        "android_client_info": {
+          "package_name": "com.example.mole_master"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR-FxuvNuVv3k4GsTsWvLyhVzgU5wZcN4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
