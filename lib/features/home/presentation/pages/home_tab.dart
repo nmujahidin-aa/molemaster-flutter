@@ -22,17 +22,46 @@ class _HomeTabState extends State<HomeTab> {
     final name = user?.name ?? 'Siswa';
 
     final menus = [
-      MenuItemUI('Capaian', Icons.flag_outlined, () => Navigator.pushNamed(context, AppRoutes.capaian)),
-      MenuItemUI('Mole Chapter', Icons.map_outlined, () {
-        Navigator.pushNamed(context, AppRoutes.moleChapterPrereq);
-      }),
-      MenuItemUI('Mole Mastery Trial', Icons.quiz_outlined, () => Navigator.pushNamed(context, AppRoutes.masteryTrial)),
-      MenuItemUI('Mole Adventure', Icons.videogame_asset_outlined, () => Navigator.pushNamed(context, AppRoutes.adventure)),
-      MenuItemUI('Mole Training Chamber', Icons.school_outlined, () => Navigator.pushNamed(context, AppRoutes.training)),
-      MenuItemUI('Feedback', Icons.feedback_outlined, () => Navigator.pushNamed(context, AppRoutes.feedback)),
-      MenuItemUI('Info Pengembang', Icons.person_pin_outlined, () => Navigator.pushNamed(context, AppRoutes.infoPengembang)),
-      MenuItemUI('Referensi', Icons.menu_book_outlined, () => Navigator.pushNamed(context, AppRoutes.referensi)),
-      MenuItemUI('Petunjuk Media', Icons.help_outline, () => Navigator.pushNamed(context, AppRoutes.petunjuk)),
+      MenuItemUI(
+        'Capaian',
+        Image.asset('assets/icon/menu/ic_menu_capaian.png', width: 100),
+        () => Navigator.pushNamed(context, AppRoutes.capaian),
+      ),
+      MenuItemUI(
+        'Mole Chapter',
+        Image.asset('assets/icon/menu/ic_menu_mole_chapter.png', width: 100),
+        () => Navigator.pushNamed(context, AppRoutes.moleChapterPrereq),
+      ),
+      MenuItemUI(
+        'Mole Mastery Trial',
+        Image.asset('assets/icon/menu/ic_menu_mole_mastery_trial.png', width: 100),
+        () => Navigator.pushNamed(context, AppRoutes.masteryTrial),
+      ),
+      MenuItemUI(
+        'Mole Adventure',
+        Image.asset('assets/icon/menu/ic_menu_mole_adventure.png', width: 100),
+        () => Navigator.pushNamed(context, AppRoutes.adventure),
+      ),
+      MenuItemUI(
+        'Mole Training Chamber',
+        Image.asset('assets/icon/menu/ic_menu_mole_training_chamber.png', width: 100),
+        () => Navigator.pushNamed(context, AppRoutes.training),
+      ),
+      MenuItemUI(
+        'Feedback',
+        Image.asset('assets/icon/menu/ic_menu_feedback.png', width: 100),
+        () => Navigator.pushNamed(context, AppRoutes.feedback),
+      ),
+      MenuItemUI(
+        'Info Pengembang',
+        Image.asset('assets/icon/menu/ic_menu_pengembang.png', width: 100),
+        () => Navigator.pushNamed(context, AppRoutes.infoPengembang),
+      ),
+      MenuItemUI(
+        'Petunjuk Media',
+        Image.asset('assets/icon/menu/ic_menu_petunjuk.png', width: 100),
+        () => Navigator.pushNamed(context, AppRoutes.petunjuk),
+      ),
     ];
 
     final filtered = menus.where((m) => m.title.toLowerCase().contains(query.toLowerCase())).toList();

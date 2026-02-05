@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MenuItemUI {
   MenuItemUI(this.title, this.icon, this.onTap);
   final String title;
-  final IconData icon;
+  final Widget icon;
   final VoidCallback onTap;
 }
 
@@ -34,12 +34,19 @@ class MenuGrid extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(item.icon, size: 30, color: Theme.of(context).colorScheme.primary),
-                  const SizedBox(height: 10),
+                  SizedBox(
+                    width: 45,
+                    height: 45,
+                    child: item.icon, // ✅ FIX
+                  ),
+                  const SizedBox(height: 6),
                   Text(
                     item.title,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ],
               ),

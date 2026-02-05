@@ -16,12 +16,8 @@ class MoleChapterPrereqPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Text(
-                  'Sebelum mulai Mole Chapter:\n'
-                  '1) Siapkan kalkulator.\n'
-                  '2) Pahami Ar/Mr dasar.\n'
-                  '3) Baca materi dengan teliti.\n\n'
-                  'Setelah materi, kamu akan mengerjakan Post Test. '
-                  'Nilai minimal kelulusan: 60.',
+                  'Sebelum kita memasuki dunia MoleMaster dan menjelajahi konsep mol, ada baiknya kita memeriksa kembali beberapa hal penting yang sudah kamu pelajari sebelumnya.  Konsep mol sangat berkaitan erat dengan ide mengenai atom, unsur, molekul, senyawa, ion, serta beberapa hukum dasar kimia. Tanpa mengingat dasar-dasar ini, perjalananmu di dunia molekul bisa terasa lebih sulit.',
+                  textAlign: TextAlign.justify,
                   style: TextStyle(color: Colors.grey.shade800, height: 1.4),
                 ),
               ),

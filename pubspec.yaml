@@ -71,6 +71,15 @@ flutter:
     - assets/lottie/success.json
     - assets/lottie/fail.json
     - assets/lottie/unlock.json
+    - assets/icon/menu/ic_menu_capaian.png
+    - assets/icon/menu/ic_menu_feedback.png
+    - assets/icon/menu/ic_menu_mole_adventure.png 
+    - assets/icon/menu/ic_menu_mole_chapter.png 
+    - assets/icon/menu/ic_menu_mole_mastery_trial.png 
+    - assets/icon/menu/ic_menu_mole_training_chamber.png 
+    - assets/icon/menu/ic_menu_pengembang.png 
+    - assets/icon/menu/ic_menu_petunjuk.png 
+    - assets/icon/menu/ic_menu_referensi.png 
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
