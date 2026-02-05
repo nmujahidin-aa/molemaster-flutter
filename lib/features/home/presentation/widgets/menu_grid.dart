@@ -30,14 +30,14 @@ class MenuGrid extends StatelessWidget {
           onTap: item.onTap,
           child: Card(
             child: Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(1),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 45,
-                    height: 45,
-                    child: item.icon, // ✅ FIX
+                    width: 65,
+                    height: 65,
+                    child: item.icon,
                   ),
                   const SizedBox(height: 6),
                   Text(

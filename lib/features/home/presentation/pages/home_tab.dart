@@ -33,7 +33,7 @@ class _HomeTabState extends State<HomeTab> {
         () => Navigator.pushNamed(context, AppRoutes.moleChapterPrereq),
       ),
       MenuItemUI(
-        'Mole Mastery Trial',
+        'Mastery Trial',
         Image.asset('assets/icon/menu/ic_menu_mole_mastery_trial.png', width: 100),
         () => Navigator.pushNamed(context, AppRoutes.masteryTrial),
       ),
@@ -43,7 +43,7 @@ class _HomeTabState extends State<HomeTab> {
         () => Navigator.pushNamed(context, AppRoutes.adventure),
       ),
       MenuItemUI(
-        'Mole Training Chamber',
+        'Training Chamber',
         Image.asset('assets/icon/menu/ic_menu_mole_training_chamber.png', width: 100),
         () => Navigator.pushNamed(context, AppRoutes.training),
       ),
@@ -56,6 +56,11 @@ class _HomeTabState extends State<HomeTab> {
         'Info Pengembang',
         Image.asset('assets/icon/menu/ic_menu_pengembang.png', width: 100),
         () => Navigator.pushNamed(context, AppRoutes.infoPengembang),
+      ),
+      MenuItemUI(
+        'Referensi',
+        Image.asset('assets/icon/menu/ic_menu_referensi.png', width: 100),
+        () => Navigator.pushNamed(context, AppRoutes.referensi),
       ),
       MenuItemUI(
         'Petunjuk Media',

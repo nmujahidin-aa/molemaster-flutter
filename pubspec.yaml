@@ -80,6 +80,8 @@ flutter:
     - assets/icon/menu/ic_menu_pengembang.png 
     - assets/icon/menu/ic_menu_petunjuk.png 
     - assets/icon/menu/ic_menu_referensi.png 
+    - assets/images/fatimah.png
+    - assets/images/candra.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
