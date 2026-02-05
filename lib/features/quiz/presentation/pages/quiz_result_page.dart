@@ -16,14 +16,28 @@ class QuizResultPage extends StatelessWidget {
   Future<void> _showUnlock(BuildContext context) async {
     await showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (_) => Dialog(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(width: 200, height: 200, child: Lottie.asset(LottieAssets.unlock, repeat: false)),
+              SizedBox(
+                width: 200,
+                height: 200,
+                child: Lottie.asset(
+                  LottieAssets.unlock,
+                  repeat: false,
+                  onLoaded: (comp) {
+                    Future.delayed(comp.duration, () {
+                      if (Navigator.of(context).canPop()) Navigator.of(context).pop();
+                    });
+                  },
+                ),
+              ),
               const Text('Materi berikutnya terbuka!', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+              const SizedBox(height: 8),
             ],
           ),
         ),

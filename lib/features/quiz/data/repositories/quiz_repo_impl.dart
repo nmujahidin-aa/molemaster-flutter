@@ -1,20 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../domain/entities/question.dart';
 import '../../domain/repositories/quiz_repository.dart';
-import '../models/question_model.dart';
+import '../datasources/question_bank.dart';
 
-class QuizRepoImpl implements QuizRepository {
-  QuizRepoImpl({required FirebaseFirestore firestore}) : _firestore = firestore;
-  final FirebaseFirestore _firestore;
-
+class LocalQuizRepoImpl implements QuizRepository {
   @override
   Future<List<Question>> getQuestions({required String type, required int materiId}) async {
-    Query<Map<String, dynamic>> q = _firestore.collection('questions').where('type', isEqualTo: type);
-
-    // materiId 0 = global
-    q = q.where('materi_id', isEqualTo: materiId);
-
-    final snap = await q.get();
-    return snap.docs.map((d) => QuestionModel.fromDoc(d.data(), d.id)).toList();
+    final list = QuestionBank.questions(type: type, materiId: materiId);
+    if (list.isEmpty) {
+      throw Exception('Soal hardcode untuk type="$type", materi_id=$materiId belum tersedia di QuestionBank.');
+    }
+    return list;
   }
 }

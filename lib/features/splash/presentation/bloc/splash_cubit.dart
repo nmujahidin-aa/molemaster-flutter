@@ -13,10 +13,6 @@ class SplashGoAuth extends SplashState {
   const SplashGoAuth();
 }
 
-class SplashGoPretest extends SplashState {
-  const SplashGoPretest();
-}
-
 class SplashGoHome extends SplashState {
   const SplashGoHome();
 }
@@ -32,12 +28,6 @@ class SplashCubit extends Cubit<SplashState> {
     final uid = _authRepository.currentUserId;
     if (uid == null) {
       emit(const SplashGoAuth());
-      return;
-    }
-
-    final profile = await _authRepository.getUserProfile(uid);
-    if (!profile.pretestDone) {
-      emit(const SplashGoPretest());
     } else {
       emit(const SplashGoHome());
     }

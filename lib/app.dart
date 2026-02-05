@@ -41,7 +41,7 @@ class MoleMasterApp extends StatelessWidget {
           create: (_) => ProgressRepoImpl(firestore: firestore),
         ),
         RepositoryProvider<QuizRepository>(
-          create: (_) => QuizRepoImpl(firestore: firestore),
+          create: (_) => LocalQuizRepoImpl(),
         ),
         RepositoryProvider<FeedbackRepository>(
           create: (_) => FeedbackRepoImpl(firestore: firestore),

@@ -23,23 +23,7 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return BlocListener<SplashCubit, SplashState>(
       listener: (context, state) async {
-        if (state is SplashGoPretest) {
-          await showDialog(
-            context: context,
-            builder: (_) => AlertDialog(
-              title: const Text('Pretest wajib'),
-              content: const Text('Selesaikan Pretest terlebih dahulu untuk membuka aplikasi.'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text('Lanjut'),
-                )
-              ],
-            ),
-          );
-          if (!context.mounted) return;
-          Navigator.pushReplacementNamed(context, AppRoutes.pretest);
-        } else if (state is SplashGoHome) {
+        if (state is SplashGoHome) {
           Navigator.pushReplacementNamed(context, AppRoutes.home);
         } else if (state is SplashGoAuth) {
           Navigator.pushReplacementNamed(context, AppRoutes.auth);
