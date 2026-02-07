@@ -121,6 +121,17 @@ class QuizResultPage extends StatelessWidget {
                     return;
                   }
 
+                  if (args.type == 'training') {
+                    // update best score jika lebih tinggi
+                    context.read<ProgressBloc>().add(
+                      ProgressUpdateTrainingBestScoreRequested(userId: uid, newScore: args.scorePercent),
+                    );
+
+                    // kembali ke TrainingPage supaya nilai tampil
+                    Navigator.pushNamedAndRemoveUntil(context, AppRoutes.training, (r) => false);
+                    return;
+                  }
+
                   Navigator.pushNamedAndRemoveUntil(context, AppRoutes.home, (r) => false);
                 },
                 child: Text(args.type == 'chapter_test' && !passed ? 'Ulangi' : 'Selesai'),

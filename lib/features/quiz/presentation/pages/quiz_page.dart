@@ -11,6 +11,8 @@ import '../bloc/quiz_bloc.dart';
 import '../widgets/option_tile.dart';
 import '../widgets/success_fail_lottie.dart';
 
+import '../widgets/explanation_view.dart';
+
 class QuizPage extends StatefulWidget {
   const QuizPage({super.key, required this.args});
   final QuizArgs args;
@@ -48,15 +50,17 @@ class _QuizPageState extends State<QuizPage> {
         showDragHandle: true,
         builder: (_) => Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text('Pembahasan', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
-              const SizedBox(height: 8),
-              Text(explanation, style: const TextStyle(height: 1.4)),
-              const SizedBox(height: 10),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('Pembahasan', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+                const SizedBox(height: 10),
+                ExplanationView(explanation: explanation),
+                const SizedBox(height: 10),
+              ],
+            ),
           ),
         ),
       );

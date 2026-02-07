@@ -1,0 +1,405 @@
+import '../models/question_model.dart';
+
+const List<QuestionModel> trainingQuestions = [
+  QuestionModel(
+    id: 'tr_001',
+    type: 'training',
+    materiId: 0,
+    question: 'Jika pada kondisi yang sama, pembentukan 3 mol gas N₂ menghasilkan volume sebesar 2 L, maka gas NH₃ (Mr = 17) yang harus disiapkan untuk menghasilkan 200 mL gas NO adalah?',
+    options: {
+      'A': '1,7 gram',
+      'B': '17 gram',
+      'C': '3,4 gram',
+      'D': '34 gram',
+      'E': '5,1 gram',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_002',
+    type: 'training',
+    materiId: 0,
+    question: 'Dalam dunia kedokteran, helium dan oksigen (heliox) digunakan untuk perawatan pasien sesak napas. Dalam tabung bervolume tetap dimasukkan 16 gram gas helium (Ar = 4) bertekanan 10 atm. Kemudian ditambahkan gas oksigen (Mr = 32) hingga tekanannya menjadi 42 atm tanpa mengubah suhu. Maka massa total gas dalam tabung adalah?',
+    options: {
+      'A': '40,96 gram',
+      'B': '42,56 gram',
+      'C': '40 gram',
+      'D': '409,6 gram',
+      'E': '425,6 gram',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_003',
+    type: 'training',
+    materiId: 0,
+    question: 'Untuk membakar 6 liter campuran gas C₃H₈ dan C₅H₁₂ diperlukan 36 liter gas O₂. Volume C₃H₈ dan C₅H₁₂ berturut-turut adalah?',
+    options: {
+      'A': '6 liter dan 4 liter',
+      'B': '4 liter dan 6 liter',
+      'C': '2 liter dan 6 liter',
+      'D': '4 liter dan 2 liter',
+      'E': '6 liter dan 2 liter',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_004',
+    type: 'training',
+    materiId: 0,
+    question: 'Jumlah molekul dalam 24 gram pirit (FeS₂) sama dengan jumlah molekul dalam?',
+    options: {
+      'A': '0,1 gram H₂',
+      'B': '6,4 gram O₂',
+      'C': '1,4 gram N₂',
+      'D': '4,4 gram CO₂',
+      'E': '2,2 gram NH₃',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_005',
+    type: 'training',
+    materiId: 0,
+    question: 'Sebanyak 5,4 gram aluminium direaksikan dengan 20 mL larutan HCl 3 M. Volume gas hidrogen yang terbentuk pada keadaan standar adalah?',
+    options: {
+      'A': '0,672 L',
+      'B': '0,627 L',
+      'C': '0,762 L',
+      'D': '0,726 L',
+      'E': '0,272 L',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_006',
+    type: 'training',
+    materiId: 0,
+    question: 'Rumus empiris suatu senyawa adalah NaCO₂. Jika 1 mol senyawa bermassa 134 gram, maka jumlah atom karbon dalam 0,1 mol senyawa tersebut adalah?',
+    options: {
+      'A': '1,2 × 10²³',
+      'B': '6,02 × 10²³',
+      'C': '3,01 × 10²³',
+      'D': '3,01 × 10²²',
+      'E': '6,02 × 10²⁰',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_007',
+    type: 'training',
+    materiId: 0,
+    question: 'Sebanyak 5,6 gram B₂H₆ direaksikan dengan 42,6 gram Cl₂. Massa HCl yang dihasilkan adalah?',
+    options: {
+      'A': '7,3 gram',
+      'B': '10,95 gram',
+      'C': '21,9 gram',
+      'D': '14,6 gram',
+      'E': '36,5 gram',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_008',
+    type: 'training',
+    materiId: 0,
+    question: 'Pemanasan 40 gram NH₄NO₃ menghasilkan 10 L gas N₂O. Jika pada kondisi yang sama 10 L gas X bermassa 22 gram, maka Mr gas X adalah?',
+    options: {
+      'A': '22',
+      'B': '44',
+      'C': '66',
+      'D': '88',
+      'E': '110',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_009',
+    type: 'training',
+    materiId: 0,
+    question: 'Jika 252 gram CO direaksikan dengan 118 gram Ni, maka massa gas Ni(CO)₄ yang dihasilkan adalah?',
+    options: {
+      'A': '430 gram',
+      'B': '427 gram',
+      'C': '342 gram',
+      'D': '280 gram',
+      'E': '171 gram',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_010',
+    type: 'training',
+    materiId: 0,
+    question: 'Reaksi 2CH₄(g) + 3Cl₂(g) → 2CHCl₃(g) + 3H₂(g). Jika volume H₂ yang dihasilkan 300 mL, maka volume total gas hasil reaksi adalah?',
+    options: {
+      'A': '300 mL',
+      'B': '400 mL',
+      'C': '500 mL',
+      'D': '600 mL',
+      'E': '700 mL',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_011',
+    type: 'training',
+    materiId: 0,
+    question: 'Reaksi sempurna 1,04 gram M₂S₃ dengan larutan HCl 0,1 M berlebih menghasilkan 510 mg gas H₂S menurut reaksi: M₂S₃(s) + HCl(aq) → MCl₃(s) + H₂S(g). Jika diketahui Ar H = 1, Ar S = 32, dan Ar Cl = 35,5, maka Ar M adalah?',
+    options: {
+      'A': '8,8',
+      'B': '17,6',
+      'C': '26,4',
+      'D': '35,2',
+      'E': '44',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_012',
+    type: 'training',
+    materiId: 0,
+    question: 'Sejumlah 5,4 gram logam L larut dalam asam sulfat menghasilkan 7,38 L gas hidrogen (27°C, 1 atm) menurut reaksi: 2L(s) + 3H₂SO₄(aq) → L₂(SO₄)₃(aq) + 3H₂(g). Massa atom relatif (Ar) logam L adalah?',
+    options: {
+      'A': '25',
+      'B': '26',
+      'C': '27',
+      'D': '28',
+      'E': '30',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_013',
+    type: 'training',
+    materiId: 0,
+    question: 'Sebanyak 12,6 gram CaH₂ direaksikan dengan air menurut reaksi: CaH₂(s) + 2H₂O(l) → Ca(OH)₂(aq) + 2H₂(g). Pada keadaan tersebut 16 gram O₂ memiliki volume 10 L. Volume gas hidrogen yang dihasilkan adalah?',
+    options: {
+      'A': '0,6 L',
+      'B': '1,2 L',
+      'C': '3,0 L',
+      'D': '6,0 L',
+      'E': '12,0 L',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_014',
+    type: 'training',
+    materiId: 0,
+    question: 'Logam vanadium diperoleh dari reaksi vanadium pentaoksida dengan kalsium: Ca + V₂O₅ → CaO + V. Jika 91 gram V₂O₅ (Mr = 182) direaksikan dengan 120 gram Ca (Ar = 40), maka massa logam vanadium (Ar = 51) yang dihasilkan adalah?',
+    options: {
+      'A': '25,5 gram',
+      'B': '51,0 gram',
+      'C': '76,5 gram',
+      'D': '102,0 gram',
+      'E': '122,5 gram',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_015',
+    type: 'training',
+    materiId: 0,
+    question: 'Etanol (C₂H₅OH) dibakar menurut reaksi: C₂H₅OH(l) + 3O₂(g) → 2CO₂(g) + 3H₂O(l). Jika 9,2 gram etanol dibakar dengan 24 gram O₂, maka volume gas CO₂ (STP) yang dihasilkan adalah?',
+    options: {
+      'A': '1,12 L',
+      'B': '2,24 L',
+      'C': '4,48 L',
+      'D': '6,72 L',
+      'E': '8,96 L',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_016',
+    type: 'training',
+    materiId: 0,
+    question: 'Sebanyak 61,5 gram aluminium klorida (Mr = 133,5) direaksikan dengan 49 gram asam sulfat (Mr = 98). Jumlah mol aluminium sulfat (Mr = 342) yang dihasilkan adalah?',
+    options: {
+      'A': '⅙',
+      'B': '¼',
+      'C': '½',
+      'D': '1',
+      'E': '3/2',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_017',
+    type: 'training',
+    materiId: 0,
+    question: 'Pada suhu dan tekanan tertentu, 7 gram gas N₂ (Mr = 28) memiliki volume 5 L. Jika gas O₂ diukur pada P dan T yang sama memiliki volume 10 L, maka jumlah molekul gas O₂ adalah?',
+    options: {
+      'A': '6,02 × 10²³',
+      'B': '3,01 × 10²³',
+      'C': '6,02 × 10²²',
+      'D': '3,01 × 10²²',
+      'E': '1,50 × 10²²',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_018',
+    type: 'training',
+    materiId: 0,
+    question: 'Pada proses Haber-Bosch: N₂(g) + H₂(g) → NH₃(g). Jika 14 gram gas nitrogen direaksikan, maka volume gas amonia (NH₃) yang dihasilkan pada keadaan STP adalah?',
+    options: {
+      'A': '1,12 L',
+      'B': '2,24 L',
+      'C': '11,3 L',
+      'D': '22,4 L',
+      'E': '33,6 L',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_019',
+    type: 'training',
+    materiId: 0,
+    question: 'Sebanyak x gram FeS direaksikan dengan asam klorida menurut reaksi: FeS(s) + 2HCl(aq) → FeCl₂(aq) + H₂S(g). Jika diperoleh 8 L gas H₂S dan 1 mol gas H₂S bervolume 20 L, maka nilai x adalah?',
+    options: {
+      'A': '8,8',
+      'B': '17,6',
+      'C': '26,4',
+      'D': '35,2',
+      'E': '44',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_020',
+    type: 'training',
+    materiId: 0,
+    question: 'Di stratosfer terjadi reaksi: 3NO₂(g) + H₂O(l) → 2HNO₃(aq) + NO(g). Satu mol NO₂ akan menghasilkan asam nitrat (Mr = 63) sebanyak?',
+    options: {
+      'A': '21 gram',
+      'B': '42 gram',
+      'C': '63 gram',
+      'D': '93 gram',
+      'E': '126 gram',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_021',
+    type: 'training',
+    materiId: 0,
+    question: 'Pada reaksi: Na₂CO₃ + H₂O → 2NaOH + CO₂. Jumlah gas CO₂ (STP) yang terbentuk jika Na₂CO₃ (Mr = 106) yang bereaksi sebanyak 5,3 gram adalah?',
+    options: {
+      'A': '2,24 L',
+      'B': '11,2 L',
+      'C': '1,12 L',
+      'D': '22,4 L',
+      'E': '5,6 L',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_022',
+    type: 'training',
+    materiId: 0,
+    question: 'Unsur X sebanyak 3,01 × 10²² atom mempunyai massa 2 gram. Massa molar unsur X adalah?',
+    options: {
+      'A': '4',
+      'B': '10',
+      'C': '20',
+      'D': '40',
+      'E': '80',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_023',
+    type: 'training',
+    materiId: 0,
+    question: 'Reaksi antara KClO₃ dan HCl adalah: KClO₃ + HCl → KCl + 3H₂O + 3Cl₂. Jika diketahui Ar K = 39, Ar Cl = 35,5, Ar O = 16, dan Ar H = 1, maka untuk memperoleh 142 gram Cl₂ diperlukan KClO₃ sebanyak?',
+    options: {
+      'A': '12,5 gram',
+      'B': '81,7 gram',
+      'C': '61,3 gram',
+      'D': '40,8 gram',
+      'E': '24,5 gram',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_024',
+    type: 'training',
+    materiId: 0,
+    question: 'Zat berikut yang memiliki jumlah atom terbanyak per gramnya adalah?',
+    options: {
+      'A': 'SO₂ (Mr = 64)',
+      'B': 'NO₂ (Mr = 46)',
+      'C': 'P₂O₅ (Mr = 142)',
+      'D': 'C₃H₈ (Mr = 44)',
+      'E': 'CH₄ (Mr = 16)',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+  QuestionModel(
+    id: 'tr_025',
+    type: 'training',
+    materiId: 0,
+    question: 'Massa gas NH₃ (Mr = 17) yang bervolume 49,2 L pada suhu 27°C dan tekanan 10 atm adalah? (R = 0,082 L·atm/mol·K)',
+    options: {
+      'A': '320 gram',
+      'B': '330 gram',
+      'C': '340 gram',
+      'D': '350 gram',
+      'E': '360 gram',
+    },
+    correctAnswer: 'C',
+    explanation: 'Pembahasan belum tersedia.',
+  ),
+
+
+];

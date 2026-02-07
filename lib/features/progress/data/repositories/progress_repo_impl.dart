@@ -50,4 +50,32 @@ class ProgressRepoImpl implements ProgressRepository {
     final ref = _firestore.collection('progress').doc(userId);
     await ref.set({'current_materi': currentMateri}, SetOptions(merge: true));
   }
+
+    @override
+  Future<void> updateTrainingBestScoreIfHigher({required String userId, required int newScore}) async {
+    final ref = _firestore.collection('progress').doc(userId);
+
+    await _firestore.runTransaction((tx) async {
+      final doc = await tx.get(ref);
+
+      // kalau doc belum ada, buat default dulu
+      if (!doc.exists) {
+        tx.set(ref, {
+          'user_id': userId,
+          'current_materi': 1,
+          'completed_materi': <int>[],
+          'training_best_score': newScore,
+        });
+        return;
+      }
+
+      final data = doc.data() ?? {};
+      final currentBest = (data['training_best_score'] as num?)?.toInt();
+
+      // update hanya jika null atau newScore > currentBest
+      if (currentBest == null || newScore > currentBest) {
+        tx.set(ref, {'training_best_score': newScore}, SetOptions(merge: true));
+      }
+    });
+  }
 }

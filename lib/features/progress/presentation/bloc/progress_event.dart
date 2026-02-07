@@ -22,3 +22,12 @@ class ProgressMarkCompletedRequested extends ProgressEvent {
   @override
   List<Object?> get props => [userId, materiId];
 }
+
+class ProgressUpdateTrainingBestScoreRequested extends ProgressEvent {
+  const ProgressUpdateTrainingBestScoreRequested({required this.userId, required this.newScore});
+  final String userId;
+  final int newScore;
+
+  @override
+  List<Object?> get props => [userId, newScore];
+}

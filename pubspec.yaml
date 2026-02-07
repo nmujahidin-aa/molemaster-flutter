@@ -42,6 +42,7 @@ dependencies:
   equatable: ^2.0.8
   lottie: ^3.3.2
   intl: ^0.20.2
+  flutter_math_fork: ^0.7.4
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,7 @@ flutter:
     - assets/lottie/success.json
     - assets/lottie/fail.json
     - assets/lottie/unlock.json
+    - assets/lottie/training_idle.json
     - assets/icon/menu/ic_menu_capaian.png
     - assets/icon/menu/ic_menu_feedback.png
     - assets/icon/menu/ic_menu_mole_adventure.png 
@@ -82,6 +84,12 @@ flutter:
     - assets/icon/menu/ic_menu_referensi.png 
     - assets/images/fatimah.png
     - assets/images/candra.png
+    - assets/images/materi1_avogadro.png
+    - assets/images/mol-mass-particles.png
+    - assets/images/volume-gas-balon.png
+    - assets/images/mole-bridge-diagram.png
+    - assets/images/molaritas-ilustrasi.png
+    - assets/images/expanded-mole-bridge.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

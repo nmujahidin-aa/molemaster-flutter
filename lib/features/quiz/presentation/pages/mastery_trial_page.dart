@@ -71,7 +71,7 @@ class _MasteryTrialPageState extends State<MasteryTrialPage> {
                       ),
                       const Spacer(),
                       Text(
-                        'Tips: Selesaikan 7 Mole Chapter untuk membuka Posttest.',
+                        'Catatan: Selesaikan 7 Mole Chapter untuk membuka Posttest.',
                         style: TextStyle(color: Colors.grey.shade700),
                         textAlign: TextAlign.center,
                       ),

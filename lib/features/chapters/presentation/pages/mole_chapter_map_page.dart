@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/config/routes.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../../../progress/presentation/bloc/progress_bloc.dart';
-import '../widgets/duolingo_map.dart';
+import '../widgets/mole_path_map.dart';
 
 class MoleChapterMapPage extends StatefulWidget {
   const MoleChapterMapPage({super.key});
@@ -26,7 +26,7 @@ class HintAlertCard extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
           decoration: BoxDecoration(
             color: primary.withOpacity(0.08),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(10),
             border: Border.all(
               color: primary.withOpacity(0.3),
             ),
@@ -99,6 +99,15 @@ class _MoleChapterMapPageState extends State<MoleChapterMapPage> {
 
                 final completed = progress.completedMateri.toSet();
                 final currentMateri = progress.currentMateri;
+                final materiMeta = const [
+                  MoleMateriMeta(id: 1, title: 'Definisi Awal dari “Mol” (Membangun Pemahaman)', icon: Icons.swap_horiz),
+                  MoleMateriMeta(id: 2, title: 'Ar dan Mr (Massa Atom dan Massa Molekul Relatif)', icon: Icons.star_outline),
+                  MoleMateriMeta(id: 3, title: 'Hubungan Mol ↔ Massa Molar', icon: Icons.calculate_outlined),
+                  MoleMateriMeta(id: 4, title: 'Volume dan Hubungannya dengan Mol', icon: Icons.compare_arrows),
+                  MoleMateriMeta(id: 5, title: 'Perbandingan Volume (Reaksi Gas)', icon: Icons.air_outlined),
+                  MoleMateriMeta(id: 6, title: 'Molaritas dan Hubungannya dengan Mol', icon: Icons.water_drop_outlined),
+                  MoleMateriMeta(id: 7, title: 'Jembatan Mol (Akhir, Sebagai Peta Besar)', icon: Icons.menu_book_outlined),
+                ];
 
                 return SingleChildScrollView(
                   padding: const EdgeInsets.all(20),
@@ -106,18 +115,11 @@ class _MoleChapterMapPageState extends State<MoleChapterMapPage> {
                     children: [
                       const HintAlertCard(),
                       const SizedBox(height: 16),
-                      DuolingoMap(
-                        total: 7,
+                      MolePathMap(
+                        materi: materiMeta,
                         currentMateri: currentMateri,
                         completed: completed,
-                        onTapMateri: (materiId) {
-                          final unlocked = materiId <= currentMateri || completed.contains(materiId);
-                          if (!unlocked) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Materi terkunci. Selesaikan materi sebelumnya.')),
-                            );
-                            return;
-                          }
+                        onStartMateri: (materiId) {
                           Navigator.pushNamed(
                             context,
                             AppRoutes.materi,
