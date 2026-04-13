@@ -26,7 +26,7 @@ class ExplanationView extends StatelessWidget {
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Math.tex(
-                  p.value,
+                  p.value,         
                   textStyle: const TextStyle(fontSize: 16),
                   mathStyle: MathStyle.display,
                 ),

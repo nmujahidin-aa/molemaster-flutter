@@ -43,23 +43,32 @@ class _QuizPageState extends State<QuizPage> {
     );
 
     if (!isCorrect) {
-      // bottom modal explanation
       if (!context.mounted) return;
       await showModalBottomSheet(
         context: context,
+        isScrollControlled: true,
         showDragHandle: true,
-        builder: (_) => Padding(
-          padding: const EdgeInsets.all(16),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('Pembahasan', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
-                const SizedBox(height: 10),
-                ExplanationView(explanation: explanation),
-                const SizedBox(height: 10),
-              ],
+        constraints: BoxConstraints(
+          minWidth: MediaQuery.of(context).size.width,
+          maxWidth: MediaQuery.of(context).size.width,
+        ),
+        builder: (_) => SizedBox(
+          width: double.infinity, 
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Pembahasan',
+                    style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+                  ),
+                  const SizedBox(height: 10),
+                  ExplanationView(explanation: explanation),
+                  const SizedBox(height: 10),
+                ],
+              ),
             ),
           ),
         ),
@@ -151,7 +160,7 @@ class _QuizPageState extends State<QuizPage> {
                           text: text,
                           isSelected: state.selected == k,
                           isCorrectOption: q.correctAnswer == k,
-                          showResult: false, // result shown via lottie+modal per requirements
+                          showResult: false,
                           onTap: () => context.read<QuizBloc>().add(QuizAnswerSelected(choice: k)),
                         ),
                       );

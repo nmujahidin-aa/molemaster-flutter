@@ -18,6 +18,7 @@ import '../../features/quiz/presentation/pages/quiz_page.dart';
 import '../../features/quiz/presentation/pages/quiz_result_page.dart';
 
 import '../../features/feedback/presentation/pages/feedback_page.dart';
+// import '../../features/adventure/presentation/pages/adventure_page.dart';
 import '../../features/quiz/presentation/pages/adventure_page.dart';
 import '../../features/quiz/presentation/pages/training_page.dart';
 

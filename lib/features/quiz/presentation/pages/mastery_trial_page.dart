@@ -40,9 +40,11 @@ class _MasteryTrialPageState extends State<MasteryTrialPage> {
                     children: [
                       Card(
                         child: ListTile(
+                          tileColor: user!.pretestDone ? const Color.fromARGB(255, 152, 212, 255) : null,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                           leading: const Icon(Icons.assignment_outlined),
                           title: const Text('Pretest'),
-                          subtitle: Text(user!.pretestDone ? 'Sudah selesai' : 'Wajib untuk pengguna baru'),
+                          subtitle: Text(user.pretestDone ? 'Sudah selesai' : 'Wajib untuk pengguna baru'),
                           trailing: const Icon(Icons.chevron_right),
                           onTap: () {
                             Navigator.pushNamed(context, AppRoutes.pretest);
@@ -52,10 +54,15 @@ class _MasteryTrialPageState extends State<MasteryTrialPage> {
                       const SizedBox(height: 12),
                       Card(
                         child: ListTile(
+                          style: allChaptersDone
+                              ? ListTileStyle.list
+                              : ListTileStyle.drawer,
+                          tileColor: allChaptersDone ? const Color.fromARGB(255, 152, 212, 255) : null,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                           leading: Icon(allChaptersDone ? Icons.lock_open : Icons.lock_outline),
                           title: const Text('Posttest'),
                           subtitle: Text(allChaptersDone
-                              ? 'Terbuka setelah semua Mole Chapter selesai'
+                              ? 'Terbuka: mari uji kemampuanmu!'
                               : 'Terkunci: selesaikan semua Mole Chapter'),
                           trailing: const Icon(Icons.chevron_right),
                           onTap: allChaptersDone

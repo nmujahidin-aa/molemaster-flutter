@@ -19,8 +19,7 @@ class AdventurePage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Text(
-                  'Mode petualangan: jawaban benar memberi kamu bintang.\n'
-                  'Ambil soal dari Firestore type="adventure", materi_id=0.',
+                  'Mode Petualangan: Setiap jawaban yang benar akan memberimu bintang. Kumpulkan bintang sebanyak mungkin dan lanjutkan petualanganmu!',
                   style: TextStyle(color: Colors.grey.shade800, height: 1.4),
                 ),
               ),
