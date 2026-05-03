@@ -22,6 +22,10 @@ import '../../features/feedback/presentation/pages/feedback_page.dart';
 import '../../features/quiz/presentation/pages/adventure_page.dart';
 import '../../features/quiz/presentation/pages/training_page.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../features/quiz/presentation/bloc/quiz_bloc.dart';
+import '../../features/quiz/data/repositories/quiz_repo_impl.dart';
+
 class AppRoutes {
   static const splash = '/';
   static const auth = '/auth';
@@ -124,7 +128,10 @@ class AppRouter {
 
       case AppRoutes.quiz:
         final args = settings.arguments as QuizArgs;
-        return MaterialPageRoute(builder: (_) => QuizPage(args: args));
+        return MaterialPageRoute(builder: (_) => BlocProvider(
+          create: (_) => QuizBloc(LocalQuizRepoImpl()),
+          child: QuizPage(args: args),
+        ));
 
       case AppRoutes.quizResult:
         final args = settings.arguments as QuizResultArgs;

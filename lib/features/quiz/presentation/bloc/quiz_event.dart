@@ -17,16 +17,26 @@ class QuizLoadRequested extends QuizEvent {
 
 class QuizAnswerSelected extends QuizEvent {
   const QuizAnswerSelected({required this.choice});
-  final String choice; // A..E
+  final String choice;
 
   @override
   List<Object?> get props => [choice];
 }
 
-class QuizNextRequested extends QuizEvent {
-  const QuizNextRequested();
+class QuizNextRequested extends QuizEvent {}
+
+class QuizPrevRequested extends QuizEvent {}
+
+class QuizToggleFlag extends QuizEvent {}
+
+class QuizJumpToQuestion extends QuizEvent {
+  const QuizJumpToQuestion(this.index);
+  final int index;
+
+  @override
+  List<Object?> get props => [index];
 }
 
-class QuizResetRequested extends QuizEvent {
-  const QuizResetRequested();
-}
+class QuizSubmitRequested extends QuizEvent {}
+
+class QuizResetRequested extends QuizEvent {}

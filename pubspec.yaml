@@ -44,6 +44,7 @@ dependencies:
   intl: ^0.20.2
   flutter_math_fork: ^0.7.4
   flutter_launcher_icons: ^0.14.4
+  photo_view: ^0.15.0
 
 dev_dependencies:
   flutter_test:
@@ -91,6 +92,11 @@ flutter:
     - assets/images/mole-bridge-diagram.png
     - assets/images/molaritas-ilustrasi.png
     - assets/images/expanded-mole-bridge.png
+    - assets/images/material/materi_1_1.png
+    - assets/images/material/materi_1_2.png
+    - assets/images/material/materi_2_1.png
+    - assets/images/material/materi_3_1.png
+    - assets/images/material/materi_4_1.png
     - assets/icon/icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

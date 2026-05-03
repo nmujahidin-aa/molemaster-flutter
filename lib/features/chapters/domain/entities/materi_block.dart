@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mole_master/features/chapters/presentation/widgets/materi/materi_blocks/bullet_list_block.dart';
 
 sealed class MateriBlock {
   const MateriBlock();
@@ -18,22 +19,49 @@ class ParagraphBlock extends MateriBlock {
     this.highlight = false,
   });
 
-  /// text supports inline math with $...$
   final String text;
 
-  /// indent in pixels (e.g. 24 for "menjorok")
   final double indent;
 
   final bool isBold;
 
-  /// highlight paragraph background
   final bool highlight;
 }
 
-class BulletListBlock extends MateriBlock {
-  const BulletListBlock(this.items, {this.indent = 0});
-  final List<String> items; // each item supports inline math $...$
+class ParagraphBlockPartial extends MateriBlock {
+  const ParagraphBlockPartial(
+    this.spans, {
+    this.indent = 0,
+    this.highlight = false,
+  });
+
+  final List<CustomTextSpan> spans; 
   final double indent;
+  final bool highlight;
+}
+
+class CustomTextSpan {
+  final String text;
+  final bool isBold;
+  
+  const CustomTextSpan(this.text, {this.isBold = false});
+}
+
+
+class BulletListBlock extends MateriBlock {
+  final List<String> items;
+  final double indent;
+  final BulletType bulletType; 
+  final String? customBullet;     
+  final bool enablePartialBold;    
+  
+  const BulletListBlock(
+    this.items, {
+    this.indent = 0,
+    this.bulletType = BulletType.disc, 
+    this.customBullet,
+    this.enablePartialBold = true,     
+  });
 }
 
 class MathBlock extends MateriBlock {

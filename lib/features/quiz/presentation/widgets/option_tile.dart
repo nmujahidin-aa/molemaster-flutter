@@ -16,7 +16,7 @@ class OptionTile extends StatelessWidget {
   final bool isSelected;
   final bool isCorrectOption;
   final bool showResult;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {

@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/config/routes.dart';
-import '../../../auth/presentation/bloc/auth_bloc.dart';
-import '../../../auth/domain/repositories/auth_repository.dart';
-import '../../../progress/presentation/bloc/progress_bloc.dart';
-import '../../../../core/utils/snackbars.dart';
 
 import '../bloc/quiz_bloc.dart';
 import '../widgets/option_tile.dart';
-import '../widgets/success_fail_lottie.dart';
-
 import '../widgets/explanation_view.dart';
+
+import '../widgets/button_nav.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({super.key, required this.args});
@@ -25,150 +21,232 @@ class _QuizPageState extends State<QuizPage> {
   @override
   void initState() {
     super.initState();
-    context.read<QuizBloc>().add(QuizLoadRequested(type: widget.args.type, materiId: widget.args.materiId));
-  }
-
-  @override
-  void dispose() {
-    context.read<QuizBloc>().add(const QuizResetRequested());
-    super.dispose();
-  }
-
-  Future<void> _handleAnswered(BuildContext context, bool isCorrect, String explanation) async {
-    // Lottie dialog (allowed)
-    await showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (_) => SuccessFailLottieDialog(success: isCorrect),
+    context.read<QuizBloc>().add(
+      QuizLoadRequested(
+        type: widget.args.type,
+        materiId: widget.args.materiId,
+      ),
     );
+  }
 
-    if (!isCorrect) {
-      if (!context.mounted) return;
-      await showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        showDragHandle: true,
-        constraints: BoxConstraints(
-          minWidth: MediaQuery.of(context).size.width,
-          maxWidth: MediaQuery.of(context).size.width,
-        ),
-        builder: (_) => SizedBox(
-          width: double.infinity, 
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Pembahasan',
-                    style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+  void _openGrid(BuildContext context, QuizState state) {
+    showModalBottomSheet(
+      context: context,
+      showDragHandle: true,
+      constraints: BoxConstraints(
+        minWidth: MediaQuery.of(context).size.width,
+        maxWidth: MediaQuery.of(context).size.width,
+      ),
+      builder: (_) {
+        return Padding(
+          padding: const EdgeInsets.all(10),
+          child: Wrap(
+            spacing: 10,
+            runSpacing: 10,
+            children: List.generate(state.total, (i) {
+              Color color;
+
+              if (state.flagged.contains(i)) {
+                color = Colors.orange; // PRIORITY
+              } else if (state.isSubmitted) {
+                color = state.results[i] == true
+                    ? Colors.green
+                    : Colors.red;
+              } else if (state.answers.containsKey(i)) {
+                color = Colors.green;
+              } else {
+                color = Colors.grey;
+              }
+
+              return GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                  context.read<QuizBloc>().add(QuizJumpToQuestion(i));
+                },
+                child: Container(
+                  width: 45,
+                  height: 45,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: color,
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  const SizedBox(height: 10),
-                  ExplanationView(explanation: explanation),
-                  const SizedBox(height: 10),
-                ],
-              ),
-            ),
+                  child: Text('${i + 1}',
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold)),
+                ),
+              );
+            }),
           ),
-        ),
-      );
-    }
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final args = widget.args;
-
     return Scaffold(
       appBar: AppBar(
-        title: Text(args.title),
-        automaticallyImplyLeading: !args.isMandatory,
+        title: Text(widget.args.title),
+        actions: [
+          BlocBuilder<QuizBloc, QuizState>(
+            builder: (context, state) {
+              return IconButton(
+                icon: const Icon(Icons.grid_view),
+                onPressed: () => _openGrid(context, state),
+              );
+            },
+          )
+        ],
       ),
-      body: BlocConsumer<QuizBloc, QuizState>(
-        listenWhen: (p, c) => p.status != c.status || (p.isAnswered != c.isAnswered),
-        listener: (context, state) async {
-          if (state.status == QuizStatus.finished) {
-            Navigator.pushReplacementNamed(
-              context,
-              AppRoutes.quizResult,
-              arguments: QuizResultArgs(
-                type: args.type,
-                materiId: args.materiId,
-                title: args.title,
-                correct: state.correctCount,
-                total: state.total,
-                scorePercent: state.scorePercent,
-              ),
-            );
-          }
-
-          if (state.status == QuizStatus.ready && state.isAnswered) {
-            final q = state.currentQuestion!;
-            final ok = state.isCorrect ?? false;
-
-            await _handleAnswered(context, ok, q.explanation);
-
-            if (!context.mounted) return;
-            context.read<QuizBloc>().add(const QuizNextRequested());
-          }
-        },
+      body: BlocBuilder<QuizBloc, QuizState>(
         builder: (context, state) {
           if (state.status == QuizStatus.loading) {
             return const Center(child: CircularProgressIndicator());
-          }
-          if (state.status == QuizStatus.failure) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Text(state.message ?? 'Gagal memuat soal'),
-              ),
-            );
           }
 
           final q = state.currentQuestion;
           if (q == null) return const SizedBox();
 
-          final progressText = 'Soal ${state.index + 1} / ${state.total}';
-
-          return Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Row(
+          return Column(
+            children: [
+              /// HEADER
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Row(
                   children: [
-                    Expanded(child: Text(progressText, style: TextStyle(color: Colors.grey.shade700))),
-                    Text('Skor: ${state.correctCount}', style: const TextStyle(fontWeight: FontWeight.w700)),
+                    Text(
+                      'Soal ${state.index + 1} / ${state.total}',
+                      style: TextStyle(color: Colors.grey.shade700),
+                    ),
+                    const Spacer(),
+                    if (state.isSubmitted)
+                      Text(
+                        'Skor: ${state.correctCount}',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
                   ],
                 ),
-                const SizedBox(height: 10),
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Text(q.question, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
-                  ),
+              ),
+
+              /// QUESTION
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text(
+                  q.question,
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 12),
-                Expanded(
-                  child: ListView(
-                    children: ['A', 'B', 'C', 'D', 'E'].map((k) {
-                      final text = q.options[k] ?? '-';
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: OptionTile(
-                          label: k,
-                          text: text,
-                          isSelected: state.selected == k,
-                          isCorrectOption: q.correctAnswer == k,
-                          showResult: false,
-                          onTap: () => context.read<QuizBloc>().add(QuizAnswerSelected(choice: k)),
+              ),
+
+              /// OPTIONS (pakai style lama)
+              Expanded(
+                child: ListView(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  children: ['A', 'B', 'C', 'D', 'E'].map((k) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: OptionTile(
+                        label: k,
+                        text: q.options[k] ?? '-',
+                        isSelected: state.selected == k,
+                        isCorrectOption: q.correctAnswer == k,
+                        showResult: state.isSubmitted,
+                        onTap: state.isSubmitted
+                            ? null
+                            : () => context
+                                .read<QuizBloc>()
+                                .add(QuizAnswerSelected(choice: k)),
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ),
+
+              /// PEMBAHASAN
+              if (state.isSubmitted)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: ExpansionTile(
+                    title: const Text('Pembahasan'),
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: ExplanationView(
+                          explanation: q.explanation,
                         ),
-                      );
-                    }).toList(),
+                      )
+                    ],
                   ),
                 ),
-              ],
-            ),
+
+              /// BOTTOM BAR (FIXED & PADAT)
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 6,
+                      color: Colors.black.withOpacity(0.05),
+                    )
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        style: btnStyle,
+                        onPressed: state.index == 0
+                            ? null
+                            : () => context
+                                .read<QuizBloc>()
+                                .add(QuizPrevRequested()),
+                        child: const Text('Prev'),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: OutlinedButton(
+                        style: btnStyle,
+                        onPressed: () => context
+                            .read<QuizBloc>()
+                            .add(QuizToggleFlag()),
+                        child: Text(
+                          state.flagged.contains(state.index)
+                              ? 'Unflag'
+                              : 'Ragu',
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      flex: 2,
+                      child: ElevatedButton(
+                        style: btnStyle,
+                        onPressed: () {
+                          if (state.index == state.total - 1) {
+                            context
+                                .read<QuizBloc>()
+                                .add(QuizSubmitRequested());
+                          } else {
+                            context
+                                .read<QuizBloc>()
+                                .add(QuizNextRequested());
+                          }
+                        },
+                        child: Text(
+                          state.index == state.total - 1
+                              ? 'Selesai'
+                              : 'Next',
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           );
         },
       ),

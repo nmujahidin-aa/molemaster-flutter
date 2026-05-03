@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mole_master/features/chapters/domain/repositories/materi_repository.dart';
+import 'package:mole_master/features/chapters/logic/bloc/materi_bloc/materi_bloc.dart';
+import 'package:mole_master/features/chapters/logic/utils/materi_unlock_logic.dart';
 
 import 'core/config/app_theme.dart';
 import 'core/config/routes.dart';
@@ -23,6 +26,8 @@ import 'features/feedback/domain/repositories/feedback_repository.dart';
 import 'features/feedback/presentation/bloc/feedback_bloc.dart';
 
 import 'features/splash/presentation/bloc/splash_cubit.dart';
+
+import 'package:mole_master/features/chapters/data/repositories/materi_repository_impl.dart';
 
 class MoleMasterApp extends StatelessWidget {
   const MoleMasterApp({super.key});
@@ -46,6 +51,9 @@ class MoleMasterApp extends StatelessWidget {
         RepositoryProvider<FeedbackRepository>(
           create: (_) => FeedbackRepoImpl(firestore: firestore),
         ),
+        RepositoryProvider<MateriRepository>(
+          create: (_) => MateriRepositoryImpl(firestore),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -66,6 +74,12 @@ class MoleMasterApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (ctx) => FeedbackBloc(ctx.read<FeedbackRepository>()),
+          ),
+          BlocProvider<MateriBloc>(
+            create: (ctx) => MateriBloc(
+              repository: ctx.read<MateriRepository>(),
+              unlockLogic: MateriUnlockLogic(),
+            ),
           ),
         ],
         child: MaterialApp(

@@ -16,7 +16,7 @@ class MoleChapterPrereqPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Text(
-                  'Sebelum kita memasuki dunia MoleMaster dan menjelajahi konsep mol, ada baiknya kita memeriksa kembali beberapa hal penting yang sudah kamu pelajari sebelumnya.  Konsep mol sangat berkaitan erat dengan ide mengenai atom, unsur, molekul, senyawa, ion, serta beberapa hukum dasar kimia. Tanpa mengingat dasar-dasar ini, perjalananmu di dunia molekul bisa terasa lebih sulit.',
+                  'Sebelum kita memasuki dunia MoleMaster dan menjelajahi konsep mol, ada baiknya kita memeriksa kembali beberapa hal penting yang sudah kamu pelajari sebelumnya. Konsep mol adalah jembatan yang menghubungkan level submikroskopik (partikel-partikel sangat kecil yang tidak kasat mata) dengan level makroskopik (sesuatu yang nyata dan bisa kita ukur di laboratorium seperti massa dan volume), yang kemudian dapat dinyatakan secara level simbolik melalui rumus dan persamaan reaksi kimia.',
                   textAlign: TextAlign.justify,
                   style: TextStyle(color: Colors.grey.shade800, height: 1.4),
                 ),

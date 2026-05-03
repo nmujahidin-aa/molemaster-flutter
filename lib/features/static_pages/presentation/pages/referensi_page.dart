@@ -10,12 +10,11 @@ class ReferensiPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final referenceIndonesiaList = referenceIndonesia.map((item) => item['details']!).toList();
-    final referenceEnglishList = referenceEnglish.map((item) => item['details']!).toList();
 
     return Scaffold(
       appBar: AppBar(title: const Text('Referensi')),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(
           child: Card(
             child: Padding(
@@ -24,12 +23,9 @@ class ReferensiPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // ===== Buku Indonesia =====
-                  const ReferenceSectionTitle('Buku Indonesia'),
+                  // const ReferenceSectionTitle('Buku Indonesia'),
                   ...referenceIndonesiaList.map((item) => CitationItem(text: item)).toList(),
 
-                  // ===== Buku Inggris =====
-                  const ReferenceSectionTitle('Buku Inggris'),
-                  ...referenceEnglishList.map((item) => CitationItem(text: item)).toList(),
                 ],
               ),
             ),
