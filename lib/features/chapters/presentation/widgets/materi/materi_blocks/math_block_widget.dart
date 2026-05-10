@@ -15,7 +15,7 @@ class MathBlockWidget extends StatelessWidget {
     final math = Math.tex(
       block.tex,
       mathStyle: MathStyle.display,
-      textStyle: const TextStyle(fontSize: 18),
+      textStyle: const TextStyle(fontSize: 14),
     );
     
     if (block.highlight) {

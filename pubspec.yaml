@@ -97,6 +97,7 @@ flutter:
     - assets/images/material/materi_2_1.png
     - assets/images/material/materi_3_1.png
     - assets/images/material/materi_4_1.png
+    - assets/images/material/materi_7_1.png
     - assets/icon/icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

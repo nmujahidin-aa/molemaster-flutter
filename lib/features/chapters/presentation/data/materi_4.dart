@@ -199,13 +199,23 @@ class MateriBab4 {
     ),
 
     ParagraphBlock(
-      'Berapa volume gas H2 yang terdapat dalam balon pada 27°C jika tekanan H2 sebesar 2 atm dan beratnya 0,5 g? Diketahui: R = 0,082 L atm/mol K dan Ar H = 1'
+      'Berapa volume gas H₂ yang terdapat dalam balon pada 27°C jika tekanan H₂ sebesar 2 atm dan beratnya 0,5 g? Diketahui: R = 0,082 L atm/mol K dan Ar H = 1'
     ),
 
-    ParagraphBlock(
-      'Jawab:'
-    )
+    ParagraphBlock('Jawab:', isBold: true),
 
+    MathBlock(
+      r'\text{Mol H₂} = \frac{\text{massa}}{\text{Mr}} = \frac{0,5 \text{ gram}}{2} = 0,25 \text{ mol}',
+    ),
+    ParagraphBlock(''),
 
+    MathBlock(
+      r'\text{V H₂} = \frac{nRT}{P} = \frac{0,25 \text{ mol} \times 0,082 \text{ L} \cdot \text{atm/mol} \cdot \text{K} \times (273 + 27) \text{ K}}{2 \text{ atm}}',
+    ),
+
+    ParagraphBlock(''),
+    MathBlock(
+      r'V = 3,075 \text{ L}',
+    ),
   ];
 }
